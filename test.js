@@ -10,4 +10,40 @@ describe('tokenish', function(){
       assert.equal(e.toString(), 'Error: Strategy must be defined');
     }
   });
+  it('should throw an error when no strategy when no method get', function(){
+    try {
+      t({add:function(){}});
+    } catch (e){
+      assert.ok(e);
+      assert.equal(e.toString(), 'Error: Strategy must have a get function');
+    }
+  });
+  it('should throw an error when no strategy when no method add', function(){
+    try {
+      t({get:function(){}});
+    } catch (e){
+      assert.ok(e);
+      assert.equal(e.toString(), 'Error: Strategy must have an add function');
+    }
+  });
+  it('should throw an error when no strategy when get isnt a function', function(){
+    try {
+      t({add:function(){}, get:'not a function'});
+      //should throw error and not execute this
+      assert.equal(true, false);
+    } catch (e){
+      assert.ok(e);
+      assert.equal(e.toString(), 'Error: Strategy must have a get function');
+    }
+  });
+  it('should throw an error when no strategy when add isnt a function', function(){
+    try {
+      t({get:function(){}, add:'not a function'});
+      //should throw error and not execute this
+      assert.equal(true, false);
+    } catch (e){
+      assert.ok(e);
+      assert.equal(e.toString(), 'Error: Strategy must have an add function');
+    }
+  });
 });

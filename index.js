@@ -2,9 +2,9 @@ var crypto = require('crypto');
 module.exports = function(strategy){
   if(!strategy){
     throw new Error('Strategy must be defined');
-  } else if (!strategy.add){
+  } else if (!strategy.add || typeof(strategy.add) !== 'function'){
     throw new Error('Strategy must have an add function');
-  } else if (!strategy.get){
+  } else if (!strategy.get || typeof(strategy.get) !== 'function'){
     throw new Error('Strategy must have a get function');
   }
   return {
