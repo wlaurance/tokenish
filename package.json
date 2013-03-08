@@ -4,7 +4,7 @@
   "description": "Interface to storing and retrieving tokens",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "./node_modules/.bin/mocha"
   },
   "repository": {
     "type": "git",
@@ -19,5 +19,8 @@
   "author": "Will S. Laurance",
   "license": "MIT",
   "readmeFilename": "README.md",
-  "gitHead": "64ca57817e88df16b4612635861324a467b23946"
+  "gitHead": "64ca57817e88df16b4612635861324a467b23946",
+  "devDependencies": {
+    "mocha": "~1.8.1"
+  }
 }
