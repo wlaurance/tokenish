@@ -46,4 +46,11 @@ describe('tokenish', function(){
       assert.equal(e.toString(), 'Error: Strategy must have an add function');
     }
   });
+  it('should return a token given a valid strategy', function(done){
+    var tokenish = t(require('tokenish-riak')());
+    tokenish.createToken('myid', function(err, token){
+      assert.ok(token);
+      done();
+    });
+  });
 });

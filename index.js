@@ -8,7 +8,7 @@ module.exports = function(strategy){
     throw new Error('Strategy must have a get function');
   }
   return {
-    create:function(key, callback){
+    createToken:function(key, callback){
       var unique = String(Math.random()) + String(key);
       var hash = crypto.createHash('sha256');
       hash.update(unique, 'utf8');
