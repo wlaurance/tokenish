@@ -6,6 +6,8 @@ module.exports = function(strategy){
     throw new Error('Strategy must have an add function');
   } else if (!strategy.get || typeof(strategy.get) !== 'function'){
     throw new Error('Strategy must have a get function');
+  } else if (!strategy.delete || typeof(strategy.delete) !== 'function'){
+    throw new Error('Strategy must have a delete function');
   }
   return {
     createToken:function(key, callback){
@@ -26,6 +28,13 @@ module.exports = function(strategy){
       strategy.get(key, function(err, tokens){
         process.nextTick(function(){
           callback(err, tokens);
+        });
+      });
+    },
+    deleteToken:function(key, token, callback){
+      strategy.delete(key, token, function(err){
+        process.nextTick(function(){
+          callback(err);
         });
       });
     }
