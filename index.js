@@ -12,7 +12,7 @@ module.exports = function(strategy){
       var unique = String(Math.random()) + String(key) + new Date().toJSON();
       var hash = crypto.createHash('sha256');
       hash.update(unique, 'utf8');
-      var token = hash.digest();
+      var token = hash.digest('hex');
       process.nextTick(function(){
         strategy.add(key, token, function(err){
           process.nextTick(function(){
