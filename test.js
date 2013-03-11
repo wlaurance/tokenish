@@ -77,12 +77,10 @@ describe('tokenish', function(){
     var tokenish = t(require('tokenish-riak')());
     tokenish.getTokens('myid', function(err, tokens){
       var token = tokens[0];
-      console.log(tokens);
       assert.ok(token);
       tokenish.deleteToken('myid', token, function(err){
         tokenish.getTokens('myid', function(err, tokens){
           assert.equal(_.indexOf(tokens, token), -1);
-          console.log(tokens);
           done();
         });
       });
