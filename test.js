@@ -53,4 +53,13 @@ describe('tokenish', function(){
       done();
     });
   });
+  it('should return a list of tokens', function(done){
+    var tokenish = t(require('tokenish-riak')());
+    tokenish.getTokens('myid', function(err, tokens){
+      assert.ok(tokens);
+      assert.ok(tokens.length);
+      assert.equal(tokens.length > 0, true);
+      done();
+    });
+  });
 });
