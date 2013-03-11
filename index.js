@@ -9,7 +9,7 @@ module.exports = function(strategy){
   }
   return {
     createToken:function(key, callback){
-      var unique = String(Math.random()) + String(key);
+      var unique = String(Math.random()) + String(key) + new Date().toJSON();
       var hash = crypto.createHash('sha256');
       hash.update(unique, 'utf8');
       var token = hash.digest();
