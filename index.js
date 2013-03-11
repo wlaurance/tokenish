@@ -37,6 +37,15 @@ module.exports = function(strategy){
           callback(err);
         });
       });
+    },
+    deleteTokens:function(key, callback){
+      strategy.get(key, function(err, tokens){
+        strategy.deleteAll(key, function(err){
+          process.nextTick(function(){
+            callback(err);
+          });
+        });
+      });
     }
   };
 };

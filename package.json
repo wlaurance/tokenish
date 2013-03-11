@@ -22,7 +22,7 @@
   "gitHead": "64ca57817e88df16b4612635861324a467b23946",
   "devDependencies": {
     "mocha": "~1.8.1",
-    "tokenish-riak": "0.0.2"
+    "tokenish-riak": "0.0.3"
   },
   "dependencies": {
     "underscore": "~1.4.4"

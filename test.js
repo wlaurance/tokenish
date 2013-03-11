@@ -86,4 +86,23 @@ describe('tokenish', function(){
       });
     });
   });
+  it('should delete all tokens', function(done){
+    var tokenish = t(require('tokenish-riak')());
+    tokenish.createToken('myid', function(err, token1){
+      tokenish.createToken('myid', function(err, token2){
+        tokenish.getTokens('myid', function(err, tokens){
+          assert.notEqual(_.indexOf(tokens, token1), -1);
+          assert.notEqual(_.indexOf(tokens, token2), -1);
+          tokenish.deleteTokens('myid', function(err){
+            tokenish.getTokens('myid', function(err, tokens){
+              assert.equal(tokens.length === 0, true);
+              assert.equal(_.indexOf(tokens, token1), -1);
+              assert.equal(_.indexOf(tokens, token2), -1);
+              done();
+            });
+          });
+        });
+      });
+    });
+  });
 });
